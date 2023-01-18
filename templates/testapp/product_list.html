@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>List of Product </h2>
+    <table border='1px'>
+      <tr>
+        <th>ProductId</th>
+        <th>ProductName</th>
+        <th>CategoryId</th>
+        <th>CategoryName</th>
+      </tr>
+      {% for i in product_list %}
+      <tr>
+        <td>{{i.ProductId}}</td>
+        <td>{{i.ProductName}}</td>
+        <td>{{i.CategoryId}}</td>
+        <td>{{i.CategoryName}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <div class="paginator">
+      <span>
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo;first</a>
+        <a href="?page={{page_obj.previous_page_number}}">previous</a>
+        {% endif %}
+        <span>
+          page{{page_obj.number}} of {{ page_obj.paginator.num_pages}}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages}}">last & raquo;</a>
+        {% endif %}
+      </span>
+
+    </div>
+
+  </body>
+</html>
